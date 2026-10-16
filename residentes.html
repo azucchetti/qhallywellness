@@ -1,0 +1,370 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><style>
+:root{--focus:#beac9b}
+*{box-sizing:border-box}
+body{margin:0;background:#0e0e0e;color:#fff7e2;font-family:'Inter','Helvetica Neue',Arial,sans-serif;font-size:17px;line-height:1.55;letter-spacing:-0.011em;-webkit-font-smoothing:antialiased}
+html{scroll-behavior:smooth}
+img{max-width:100%}
+a{color:inherit}
+p{margin:0}
+:focus-visible{outline:2px solid var(--focus);outline-offset:3px}
+.dark{background:#0e0e0e;color:#fff7e2;--focus:#beac9b}
+.wine{background:#330102;color:#fff7e2;--focus:#beac9b}
+.light{background:#fff7e2;color:#0e0e0e;--focus:#820203}
+.sand{background:#beac9b;color:#0e0e0e;--focus:#330102}
+.s{padding:clamp(56px,8vw,128px) clamp(20px,6vw,96px)}
+.w{max-width:1200px;margin:0 auto}
+.dsp{font-family:'Playfair Display',Georgia,serif;font-weight:400;line-height:1.06;letter-spacing:-0.035em;margin:0}
+.h1{font-size:clamp(34px,5vw,64px);line-height:1.05}
+.h2{font-size:clamp(34px,4.6vw,62px)}
+.h3{font-family:'Inter',sans-serif;font-weight:500;font-size:clamp(20px,1.9vw,24px);line-height:1.25;letter-spacing:-0.02em;margin:0}
+.eb{font:500 13px/1.3 'Inter',sans-serif;letter-spacing:.12em;text-transform:uppercase;margin:0 0 18px}
+.lead{font-weight:400;font-size:clamp(18px,1.8vw,22px);line-height:1.45;margin:0}
+.dm{color:#beac9b}.lm{color:#4d4a44}.sand .lm{color:#2b2824}
+.btn,.btn-o{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:48px;padding:12px 26px;border-radius:2px;font:500 16px/1.25 'Inter',sans-serif;letter-spacing:-0.01em;text-decoration:none;text-align:center;cursor:pointer;transition:background .2s,border-color .2s}
+.btn{background:#820203;color:#fff7e2;border:1px solid rgba(255,247,226,.4)}
+.btn:hover{background:#660202}
+.btn[disabled]{opacity:.65;cursor:progress}
+.light .btn,.sand .btn{border-color:#820203}
+.btn-o{background:transparent;color:inherit;border:1px solid currentColor}
+.btn-o:hover{background:rgba(51,1,2,.1)}
+.dark .btn-o:hover,.wine .btn-o:hover{background:rgba(190,172,155,.16)}
+.tl{display:inline-flex;gap:8px;align-items:center;font-weight:500;text-decoration:none;border-bottom:1px solid currentColor;padding-bottom:2px;width:fit-content;transition:gap .2s}
+.tl:hover{gap:14px}
+/* header */
+.hd{position:sticky;top:0;z-index:60;background:rgba(14,14,14,.96);color:#fff7e2;border-bottom:1px solid rgba(255,247,226,.14);padding:0 clamp(20px,6vw,96px);--focus:#beac9b}
+.hd-in{max-width:1200px;margin:0 auto;height:76px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+.nv{display:flex;gap:32px;align-items:center;font-size:15px}
+.nv a{text-decoration:none;opacity:.82;padding:6px 0;border-bottom:1px solid transparent}
+.nv a:hover,.nv a[aria-current]{opacity:1;border-bottom-color:#beac9b}
+.mbtn{display:none;min-width:48px;min-height:48px;align-items:center;justify-content:center;background:none;border:1px solid rgba(255,247,226,.35);border-radius:2px;color:#fff7e2;cursor:pointer}
+.mm{max-width:1200px;margin:0 auto;padding:8px 0 28px;display:grid;gap:0}
+.mm a.l{font:500 24px/1.2 'Inter',sans-serif;letter-spacing:-0.025em;text-decoration:none;padding:16px 0;border-bottom:1px solid rgba(255,247,226,.14)}
+.mm .btn{margin-top:24px}.mm .btn-o{margin-top:16px}
+.mcta{display:none}
+/* hero */
+.hero-g{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:clamp(32px,5vw,80px);align-items:center}
+.hero-t{display:flex;flex-direction:column;justify-content:center;gap:24px}
+.ph{position:relative;overflow:hidden;border-radius:2px;background:#1a0b0a;margin:0;isolation:isolate}
+.ph img{display:block;width:100%;height:100%;object-fit:cover}
+.ph-h{aspect-ratio:5/4;width:100%;border:1px solid rgba(190,172,155,.28)}
+.ph-h img{object-position:50% 50%}
+.note{font-size:14px;line-height:1.5;color:#beac9b;margin-top:12px}
+.pline{padding:14px 18px;border:1px solid rgba(190,172,155,.5);border-radius:2px;font-size:18px;line-height:1.4;max-width:34em}
+.pline b{font-weight:600}
+.rise{animation:rise .9s ease-out both}
+.rise.d1{animation-delay:.12s}.rise.d2{animation-delay:.24s}.rise.d3{animation-delay:.36s}
+@keyframes rise{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+/* selector */
+.sg{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(32px,5vw,80px);align-items:start}
+.card{border-radius:2px;padding:clamp(24px,3.4vw,44px);border-top:3px solid #820203}
+.q-lab{display:block;font:500 14px 'Inter',sans-serif;margin:0 0 6px;color:#0e0e0e}
+.q-in{width:100%;min-height:48px;padding:10px 14px;border:1px solid #0e0e0e;border-radius:2px;background:#fff7e2;color:#0e0e0e;font:400 16px 'Inter',sans-serif;letter-spacing:-0.02em}
+.q-in:focus{outline:2px solid #330102;outline-offset:1px}
+.q-in[aria-invalid="true"]{border:2px solid #820203}
+textarea.q-in{resize:vertical;line-height:1.5}
+.hint{font-size:14px;line-height:1.45;color:#330102;margin-top:6px}
+.f{display:grid;gap:0}
+.er{display:flex;gap:8px;align-items:flex-start;margin-top:6px;font:500 14px/1.4 'Inter',sans-serif;color:#820203}
+.er svg{flex:none;margin-top:2px}
+.cb{display:flex;gap:12px;align-items:flex-start;font-size:14.5px;line-height:1.5}
+.cb input{width:22px;height:22px;margin:0;accent-color:#820203;flex:none}
+.cb a{font-weight:600}
+.cbx{position:relative}
+.lb{position:absolute;left:0;right:0;top:100%;margin-top:4px;background:#fff7e2;border:1px solid #0e0e0e;border-radius:2px;max-height:360px;overflow:auto;z-index:30;box-shadow:0 14px 34px rgba(14,14,14,.28)}
+.opt{display:flex;width:100%;gap:12px;justify-content:space-between;align-items:center;text-align:left;padding:12px 14px;min-height:52px;background:transparent;border:0;border-bottom:1px solid rgba(14,14,14,.14);font:400 16px 'Inter',sans-serif;letter-spacing:-0.02em;color:#0e0e0e;cursor:pointer}
+.opt.on{background:#beac9b;box-shadow:inset 4px 0 0 #820203}
+.opt small{display:block;color:#4d4a44;font-size:14px}
+.chip{font:500 12px/1.2 'Inter',sans-serif;padding:4px 10px;border:1px solid #0e0e0e;border-radius:20px;white-space:nowrap;color:#0e0e0e}
+.chip.a{background:#0e0e0e;color:#fff7e2}
+.chip.s{border-style:dashed}
+.clr{position:absolute;right:6px;top:6px;min-height:36px;padding:0 12px;background:transparent;border:0;font:500 14px 'Inter',sans-serif;color:#330102;text-decoration:underline;cursor:pointer}
+.msg{font:500 clamp(22px,2.4vw,30px)/1.2 'Inter',sans-serif;letter-spacing:-0.03em;margin:0}
+.pnl{display:grid;gap:22px;margin-top:28px;padding-top:28px;border-top:1px solid rgba(14,14,14,.3)}
+.offer{display:grid;gap:0;border-top:1px solid rgba(14,14,14,.3)}
+.offer div{display:flex;justify-content:space-between;gap:16px;padding:10px 0;border-bottom:1px solid rgba(14,14,14,.2);font-size:16px}
+.offer b{font-weight:600;color:#820203}
+.ok{background:#fff7e2;border-radius:2px;padding:24px;display:grid;gap:10px}
+.alert{display:flex;gap:10px;align-items:flex-start;padding:14px 16px;border:2px solid #820203;border-radius:2px;background:#fff7e2;font-size:15px;line-height:1.45}
+.sub{display:grid;gap:18px;padding:24px;border:1px solid #0e0e0e;border-radius:2px}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+/* beneficios */
+.bn{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(32px,6vw,96px);align-items:start}
+.bl{list-style:none;margin:0;padding:0;counter-reset:b}
+.bl li{display:grid;grid-template-columns:56px 1fr;gap:12px;padding:26px 0;border-top:1px solid rgba(255,247,226,.2)}
+.bl li:last-child{border-bottom:1px solid rgba(255,247,226,.2)}
+.bl li::before{counter-increment:b;content:"0" counter(b);font:500 15px 'Inter',sans-serif;letter-spacing:.06em;color:#beac9b}
+/* planes */
+.pl{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:20px;align-items:start}
+.pc{padding:clamp(28px,4vw,48px);border-radius:2px;display:grid;gap:22px}
+.pc.b{margin-top:48px}
+.price{font:600 clamp(48px,5.4vw,76px)/1 'Inter',sans-serif;letter-spacing:-0.04em;margin:0}
+.tk{list-style:none;margin:0;padding:0;display:grid;gap:12px;font-size:17px}
+.tk li{display:flex;gap:12px}
+.tk svg{flex:none;margin-top:3px}
+.lad div{display:flex;justify-content:space-between;gap:16px;padding:14px 0;border-bottom:1px solid rgba(255,247,226,.25);font-size:17px}
+.lad{border-top:1px solid rgba(255,247,226,.25)}
+.rec{display:flex;flex-wrap:wrap;gap:16px 40px;justify-content:space-between;align-items:baseline;margin-top:28px;padding-top:24px;border-top:1px solid rgba(255,247,226,.25)}
+/* horarios */
+.hrs{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,4vw,64px)}
+.hrs ul{list-style:none;margin:16px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:10px}
+.hrs li{border:1px solid rgba(14,14,14,.4);padding:10px 16px;border-radius:2px;font:500 18px 'Inter',sans-serif;font-variant-numeric:tabular-nums}
+/* pasos */
+.steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:3px solid #820203}
+.steps li{padding:32px 32px 8px 0;display:grid;gap:10px;align-content:start}
+.steps li+li{padding-left:32px;border-left:1px solid rgba(14,14,14,.25)}
+.num{font:300 clamp(56px,7vw,96px)/.9 'Inter',sans-serif;letter-spacing:-0.05em;color:#fff7e2}
+/* faq */
+details.fq{border-top:1px solid rgba(14,14,14,.22)}
+details.fq:last-of-type{border-bottom:1px solid rgba(14,14,14,.22)}
+details.fq summary{list-style:none;cursor:pointer;padding:22px 0;min-height:48px;font:500 20px/1.3 'Inter',sans-serif;letter-spacing:-0.02em;display:flex;justify-content:space-between;gap:24px;align-items:center}
+details.fq summary::-webkit-details-marker{display:none}
+details.fq summary::after{content:'+';font:400 28px 'Inter',sans-serif;color:#820203}
+details.fq[open] summary::after{content:'–'}
+details.fq p{margin:0 0 24px;max-width:64ch;line-height:1.6;color:#4d4a44}
+/* pie */
+.ft{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr) minmax(0,1fr);gap:40px}
+.ft a{text-decoration:none;opacity:.85}.ft a:hover{opacity:1;text-decoration:underline}
+.ft nav{display:grid;gap:10px;font-size:15px;align-content:start}
+@media (max-width:980px){
+ .nv{display:none}.mbtn{display:inline-flex}.hd-cta{display:none}
+ .mcta{display:block;position:fixed;left:0;right:0;bottom:0;z-index:70;padding:10px 16px calc(10px + env(safe-area-inset-bottom));background:rgba(14,14,14,.97);border-top:1px solid rgba(255,247,226,.2)}
+ .mcta .btn{width:100%}
+ .ftw{padding-bottom:calc(96px + env(safe-area-inset-bottom)) !important}
+}
+@media (max-width:900px){
+ .hero-g,.sg,.bn,.pl,.hrs,.ft{grid-template-columns:1fr}
+ .pc.b{margin-top:0}
+ .steps{grid-template-columns:1fr}
+ .steps li,.steps li+li{padding:24px 0;border-left:0;border-bottom:1px solid rgba(14,14,14,.25)}
+ .row2{grid-template-columns:1fr}
+}
+@media (max-width:900px){.ph-h{aspect-ratio:3/2}.ph-h img{object-position:30% 50%}}
+@media (max-width:600px){.ph-h{aspect-ratio:3/2}.btn,.btn-o{width:100%}.s{padding-top:56px;padding-bottom:56px}}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none !important;transition:none !important;scroll-behavior:auto !important}}
+</style></head><body>
+
+
+<div style="width:100%;overflow-x:clip">
+
+<!-- ===== CABECERA ===== -->
+<header class="hd">
+  <div class="hd-in">
+    <a href="index.html" aria-label="Qhali, inicio" style="display:block;line-height:0"><img src="./wordmark-vanilla.svg" alt="Qhali" width="104" height="32" style="display:block;width:104px;height:auto"></a>
+    <nav class="nv" aria-label="Principal">
+      <a href="index.html">Experiencia Qhali</a>
+      <a href="residentes.html" aria-current="page">Para residentes</a>
+      <a href="edificios.html">Para tu edificio</a>
+      <a href="index.html">Equipo</a>
+    </nav>
+    <a class="btn hd-cta" href="#encuentra">¿Qhali está en mi edificio?</a>
+    <button class="mbtn" type="button" aria-expanded="false" aria-controls="menu-movil" aria-label="Abrir menú" onclick="() =&gt; this.setState({ menu: !open })">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M4 8h16M4 16h16"></path></svg>
+      
+    </button>
+  </div>
+  
+</header>
+
+<!-- ===== HERO ===== -->
+<section class="s dark" style="padding-bottom:clamp(48px,6vw,80px)">
+  <div class="w">
+    <div class="hero-g">
+      <div class="hero-t">
+        <p class="eb dm rise" style="margin:0">Para residentes</p>
+        <h1 class="dsp h1 rise d1">Entrena con acompañamiento profesional, a pocos pasos de tu departamento.</h1>
+        <p class="lead dm rise d2" style="max-width:34ch">Comparte la sesión con un grupo pequeño, con ejercicios adaptados a tus objetivos.</p>
+        <p class="pline rise d2">Plan semipersonalizado: <b>S/559 al mes</b>, con nutrición incluida.</p>
+        <div class="rise d3" style="display:flex;flex-wrap:wrap;gap:14px">
+          <a class="btn" href="#encuentra">¿Qhali está en mi edificio?</a>
+          <a class="btn-o" href="#planes">Ver los planes</a>
+        </div>
+      </div>
+      <div><figure class="ph ph-h">
+        <img src="./foto-grupo-1536.jpg" srcset="./foto-grupo-768.jpg 768w, ./foto-grupo-1536.jpg 1536w" sizes="(max-width:900px) 100vw, 520px" alt="Un grupo pequeño entrena con mancuernas mientras una trainer corrige la postura de una residente" width="1536" height="1024" fetchpriority="high" decoding="async">
+      </figure>
+        <p class="note">Imágenes ilustrativas generadas con IA; no corresponden a clientes ni instalaciones reales de Qhali.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SELECTOR DE EDIFICIOS ===== -->
+<section class="s light" id="encuentra">
+  <div class="w sg">
+    <div style="display:grid;gap:18px">
+      <p class="eb" style="margin:0;color:#820203">Tu edificio</p>
+      <h2 class="dsp h2">Encuentra tu edificio.</h2>
+      <p class="lead lm" style="max-width:26ch">Busca por nombre o distrito y te mostramos qué hay disponible.</p>
+    </div>
+
+    <div>
+      <div class="card sand">
+        <label class="q-lab" for="edificio">Edificio o condominio</label>
+        <div class="cbx">
+          <input class="q-in" id="edificio" type="text" role="combobox" autocomplete="off" aria-autocomplete="list" aria-expanded="false" aria-controls="lista-edificios" aria-activedescendant="" aria-describedby="edificio-ayuda" placeholder="Por ejemplo, Mirador o San Isidro" value="" oninput="(e) =&gt; this.setState({ query: e.target.value, open: true, active: 0, selectedId: null, notFound: false, stage: 'form' })" onchange="(e) =&gt; this.setState({ query: e.target.value, open: true, active: 0, selectedId: null, notFound: false, stage: 'form' })" onkeydown="(e) =&gt; {
+        const n = list.length;
+        if (e.key === 'ArrowDown') { e.preventDefault(); this.setState({ open: true, active: s.open ? (a + 1) % n : a }); }
+        else if (e.key === 'ArrowUp') { e.preventDefault(); this.setState({ open: true, active: s.open ? (a - 1 + n) % n : a }); }
+        else if (e.key === 'Enter' &amp;&amp; s.open) { e.preventDefault(); this.pick(list[a]); }
+        else if (e.key === 'Escape') { this.setState({ open: false }); }
+      }" onfocus="() =&gt; this.setState({ open: true })" onblur="() =&gt; this.setState({ open: false })" style="padding-right:96px">
+          
+          
+        </div>
+        <p class="hint" id="edificio-ayuda">Escribe el nombre o el distrito. Los edificios de esta lista son de demostración y no existen.</p>
+
+        
+          <p style="margin-top:28px;font-size:17px;line-height:1.5;color:#330102">Elige tu edificio para ver los planes, los horarios y cómo continuar.</p>
+        
+
+        
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===== BENEFICIOS ===== -->
+<section class="s wine">
+  <div class="w bn">
+    <div style="display:grid;gap:18px">
+      <p class="eb dm" style="margin:0">Tu día a día</p>
+      <h2 class="dsp h2">Un plan que encaja en tu rutina.</h2>
+    </div>
+    <ol class="bl">
+      <li><div><h3 class="h3">Aprovecha el gimnasio de tu edificio</h3><p class="dm" style="margin-top:8px;max-width:44ch">Entrenas donde ya vives, sin desplazarte.</p></div></li>
+      <li><div><h3 class="h3">Entrena con orientación</h3><p class="dm" style="margin-top:8px;max-width:44ch">Un trainer de referencia adapta cada sesión a tus objetivos.</p></div></li>
+      <li><div><h3 class="h3">Integra tu nutrición</h3><p class="dm" style="margin-top:8px;max-width:44ch">Orientación y planes nutricionales, incluidos en los planes de entrenamiento.</p></div></li>
+      <li><div><h3 class="h3">Ten seguimiento</h3><p class="dm" style="margin-top:8px;max-width:44ch">Revisamos tu evolución y ajustamos tu plan.</p></div></li>
+    </ol>
+  </div>
+</section>
+
+<!-- ===== PLANES ===== -->
+<section class="s dark" id="planes">
+  <div class="w" style="display:grid;gap:clamp(32px,5vw,56px)">
+    <div style="display:grid;gap:18px;max-width:760px">
+      <p class="eb dm" style="margin:0">Planes de referencia</p>
+      <h2 class="dsp h2">Entrenamiento profesional, dentro de tu edificio.</h2>
+      <p class="lead dm" style="max-width:44ch">Los servicios, precios y horarios se confirman por edificio. Elige el tuyo arriba para ver lo disponible.</p>
+    </div>
+    <div class="pl">
+      <article class="pc light">
+        <div style="display:grid;gap:8px">
+          <p class="eb" style="margin:0;color:#4d4a44">Plan semipersonalizado</p>
+          <p class="price" style="color:#820203">S/559</p>
+          <p class="lm" style="font-size:15px">por residente, al mes</p>
+        </div>
+        <ul class="tk">
+          <li><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#820203" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg>Hasta 5 sesiones por semana, de lunes a viernes</li>
+          <li><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#820203" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg>Sesiones de aproximadamente 55 minutos</li>
+          <li><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#820203" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg>Hasta 6 personas por trainer</li>
+          <li><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#820203" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg>Nutrición incluida</li>
+          <li><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#820203" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg>Reservas hasta 7 días antes, sujetas a disponibilidad</li>
+        </ul>
+      </article>
+      <article class="pc wine b">
+        <div style="display:grid;gap:8px">
+          <p class="eb dm" style="margin:0">Plan personalizado · 1 residente, 1 trainer</p>
+          <p class="price">Desde S/1,000</p>
+          <p class="dm" style="font-size:15px">al mes</p>
+        </div>
+        <div class="lad">
+          <div><span>3 veces por semana</span><b style="font-weight:600">S/1,000</b></div>
+          <div><span>4 veces por semana</span><b style="font-weight:600">S/1,250</b></div>
+          <div><span>5 veces por semana</span><b style="font-weight:600">S/1,450</b></div>
+        </div>
+        <p class="dm" style="font-size:16px;line-height:1.55">Sesiones de aproximadamente 55 minutos, coordinadas con tu trainer. Nutrición incluida.</p>
+      </article>
+    </div>
+    <div class="rec">
+      <div><h3 class="h3">Terapia física y descarga muscular</h3><p class="dm" style="margin-top:6px;max-width:46ch">La recuperación se contrata por separado. Consulta los beneficios de tu plan.</p></div>
+      <p style="font:600 32px 'Inter',sans-serif;letter-spacing:-0.03em;color:#beac9b">S/100 <span style="font:400 16px 'Inter',sans-serif;letter-spacing:-0.02em">por sesión</span></p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== HORARIOS ===== -->
+<section class="s light">
+  <div class="w" style="display:grid;gap:clamp(28px,4vw,48px)">
+    <div style="display:grid;gap:18px;max-width:700px">
+      <p class="eb" style="margin:0;color:#820203">Horarios de referencia</p>
+      <h2 class="dsp h2">De lunes a viernes, mañana y noche.</h2>
+    </div>
+    <div class="hrs">
+      <div><h3 class="h3">Mañana</h3><ul><li>6:30 – 7:25</li><li>7:30 – 8:25</li><li>8:30 – 9:25</li></ul></div>
+      <div><h3 class="h3">Noche</h3><ul><li>18:00 – 18:55</li><li>19:00 – 19:55</li><li>20:00 – 20:55</li><li>21:00 – 21:55</li></ul></div>
+    </div>
+    <p class="lm" style="font-size:15px;max-width:60ch">Mostramos horarios específicos solo cuando están confirmados para tu edificio.</p>
+  </div>
+</section>
+
+<!-- ===== CÓMO EMPIEZAS ===== -->
+<section class="s sand">
+  <div class="w" style="display:grid;gap:clamp(32px,5vw,56px)">
+    <div style="display:grid;gap:18px;max-width:700px">
+      <p class="eb" style="margin:0;color:#330102">Cómo empiezas</p>
+      <h2 class="dsp h2" style="color:#330102">Tres momentos, a tu ritmo.</h2>
+    </div>
+    <ol class="steps">
+      <li><span class="num" aria-hidden="true">1</span><h3 class="h3">Conocemos tus objetivos</h3><p style="color:#330102;max-width:30ch">Conversamos sobre tu punto de partida y lo que quieres lograr.</p></li>
+      <li><span class="num" aria-hidden="true">2</span><h3 class="h3">Definimos tu plan</h3><p style="color:#330102;max-width:30ch">Entrenamiento y nutrición adaptados a tu rutina.</p></li>
+      <li><span class="num" aria-hidden="true">3</span><h3 class="h3">Te acompañamos a entrenar y progresar</h3><p style="color:#330102;max-width:30ch">Sesiones con profesionales y seguimiento de tu evolución.</p></li>
+    </ol>
+    <p style="color:#330102;max-width:70ch;font-size:16px;line-height:1.6"><b style="font-weight:600">Sobre la evaluación inicial.</b> Antes de empezar conversamos sobre tus objetivos y tu punto de partida. El alcance, el costo y los requisitos de la evaluación, por ejemplo la información de salud que se necesite, se confirman al coordinar contigo y según tu edificio.</p>
+  </div>
+</section>
+
+<!-- ===== PREGUNTAS FRECUENTES ===== -->
+<section class="s light">
+  <div class="w" style="max-width:960px;display:grid;gap:40px">
+    <h2 class="dsp h2">Preguntas frecuentes.</h2>
+    <div>
+      <details class="fq"><summary>¿Cómo sé si hay Qhali en mi edificio?</summary><p>Usa el buscador de esta página. Si tu edificio aún no tiene el servicio o no aparece, puedes registrar tu interés y, si quieres, ayudarnos a presentar la propuesta a tu Junta.</p></details>
+      <details class="fq"><summary>¿Cuánto cuestan los planes?</summary><p>Como referencia, el plan semipersonalizado cuesta S/559 al mes por residente, y el personalizado va desde S/1,000 al mes según las veces por semana. Los precios y servicios exactos se confirman por edificio.</p></details>
+      <details class="fq"><summary>¿La nutrición tiene un costo adicional?</summary><p>No. La nutrición está incluida en los planes de entrenamiento, tanto el semipersonalizado como el personalizado.</p></details>
+      <details class="fq"><summary>¿La recuperación está incluida en la mensualidad?</summary><p>No forma parte de la mensualidad. La terapia física y la descarga muscular se contratan por sesión, con S/100 como referencia, salvo un beneficio que se confirme expresamente.</p></details>
+      <details class="fq"><summary>¿Cuándo puedo reservar mis sesiones?</summary><p>En el plan semipersonalizado puedes reservar hasta con 7 días de anticipación, en cualquier horario disponible. En el personalizado, la reserva se coordina con tu trainer.</p></details>
+      <details class="fq"><summary>¿Cómo empiezo?</summary><p>Elige tu edificio y solicita la coordinación de tu evaluación. Te contactamos para conversar sobre tus objetivos y confirmar el alcance, el costo y los requisitos de la evaluación.</p></details>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CIERRE ===== -->
+<section class="s wine">
+  <div class="w" style="display:grid;gap:32px">
+    <h2 class="dsp h2" style="max-width:18ch">¿Tu edificio aún no tiene Qhali?</h2>
+    <p class="lead dm" style="max-width:40ch">Registra tu interés y, si quieres, ayúdanos a presentar la propuesta a tu Junta o administración.</p>
+    <div style="display:flex;flex-wrap:wrap;gap:14px;align-items:center">
+      <a class="btn" href="#encuentra">¿Qhali está en mi edificio?</a>
+      <a class="tl" href="edificios.html">Conoce la propuesta para tu edificio <span aria-hidden="true">→</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PIE ===== -->
+<footer class="s dark ftw" style="padding-top:64px;padding-bottom:40px">
+  <div class="w">
+    <div class="ft">
+      <div style="display:grid;gap:20px;align-content:start">
+        <img src="./wordmark-vanilla.svg" alt="Qhali" width="136" height="42" style="display:block;width:136px;height:auto">
+        <p class="dm" style="font:italic 400 22px/1.25 'Playfair Display',Georgia,serif;max-width:18ch">Wellbeing premium dentro de tu edificio.</p>
+      </div>
+      <nav aria-label="Pie de página">
+        <a href="index.html">Experiencia Qhali</a>
+        <a href="residentes.html">Para residentes</a>
+        <a href="edificios.html">Para tu edificio</a>
+        <a href="index.html">Equipo</a>
+      </nav>
+      <div style="display:grid;gap:10px;font-size:15px;align-content:start">
+        <b style="font-weight:600">Contacto</b>
+        <a href="https://wa.me/51913097226">+51 913 097 226</a>
+        <p class="dm">Move · Nourish · Recover</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<div class="mcta"><a class="btn" href="#encuentra">¿Qhali está en mi edificio?</a></div>
+
+</div>
+</body></html>

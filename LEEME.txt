@@ -1,0 +1,4 @@
+Vista estática de la web de Qhali (maqueta).
+Abre index.html. Las páginas se enlazan entre sí.
+Es una vista de revisión: el selector de edificios y los formularios no funcionan aquí; para probarlos usa el enlace del diseño en Claude.
+Las imágenes son ilustrativas generadas con IA; los retratos son fotos reales del equipo.

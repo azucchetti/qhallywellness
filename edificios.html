@@ -1,0 +1,521 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><style>
+:root{--focus:#beac9b}
+*{box-sizing:border-box}
+body{margin:0;background:#0e0e0e;color:#fff7e2;font-family:'Inter','Helvetica Neue',Arial,sans-serif;font-size:17px;line-height:1.55;letter-spacing:-0.011em;-webkit-font-smoothing:antialiased}
+html{scroll-behavior:smooth}
+img{max-width:100%}
+a{color:inherit}
+p{margin:0}
+:focus-visible{outline:2px solid var(--focus);outline-offset:3px}
+.dark{background:#0e0e0e;color:#fff7e2;--focus:#beac9b}
+.wine{background:#330102;color:#fff7e2;--focus:#beac9b}
+.light{background:#fff7e2;color:#0e0e0e;--focus:#820203}
+.sand{background:#beac9b;color:#0e0e0e;--focus:#330102}
+.s{padding:clamp(56px,8vw,128px) clamp(20px,6vw,96px)}
+.w{max-width:1200px;margin:0 auto}
+.dsp{font-family:'Playfair Display',Georgia,serif;font-weight:400;line-height:1.06;letter-spacing:-0.035em;margin:0}
+.h1{font-size:clamp(42px,6vw,82px);line-height:1.03}
+.h2{font-size:clamp(34px,4.6vw,62px)}
+.h3{font-family:'Inter',sans-serif;font-weight:500;font-size:clamp(20px,1.9vw,24px);line-height:1.25;letter-spacing:-0.02em;margin:0}
+.eb{font:500 13px/1.3 'Inter',sans-serif;letter-spacing:.12em;text-transform:uppercase;margin:0 0 18px}
+.lead{font-weight:400;font-size:clamp(18px,1.8vw,22px);line-height:1.45;margin:0}
+.dm{color:#beac9b}.lm{color:#4d4a44}.sand .lm{color:#2b2824}
+.btn,.btn-o{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:48px;padding:12px 26px;border-radius:2px;font:500 16px/1.25 'Inter',sans-serif;letter-spacing:-0.01em;text-decoration:none;text-align:center;cursor:pointer;transition:background .2s,border-color .2s}
+.btn{background:#820203;color:#fff7e2;border:1px solid rgba(255,247,226,.4)}
+.btn:hover{background:#660202}
+.btn[disabled]{opacity:.65;cursor:progress}
+.light .btn,.sand .btn{border-color:#820203}
+.btn-o{background:transparent;color:inherit;border:1px solid currentColor}
+.dark .btn-o:hover,.wine .btn-o:hover{background:rgba(190,172,155,.16)}
+.tl{display:inline-flex;gap:8px;align-items:center;font-weight:500;text-decoration:none;border-bottom:1px solid currentColor;padding-bottom:2px;width:fit-content;transition:gap .2s}
+.tl:hover{gap:14px}
+/* header */
+.hd{position:sticky;top:0;z-index:60;background:rgba(14,14,14,.96);color:#fff7e2;border-bottom:1px solid rgba(255,247,226,.14);padding:0 clamp(20px,6vw,96px);--focus:#beac9b}
+.hd-in{max-width:1200px;margin:0 auto;height:76px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+.nv{display:flex;gap:32px;align-items:center;font-size:15px}
+.nv a{text-decoration:none;opacity:.82;padding:6px 0;border-bottom:1px solid transparent}
+.nv a:hover,.nv a[aria-current]{opacity:1;border-bottom-color:#beac9b}
+.mbtn{display:none;min-width:48px;min-height:48px;align-items:center;justify-content:center;background:none;border:1px solid rgba(255,247,226,.35);border-radius:2px;color:#fff7e2;cursor:pointer}
+.mm{max-width:1200px;margin:0 auto;padding:8px 0 28px;display:grid;gap:0}
+.mm a.l{font:500 24px/1.2 'Inter',sans-serif;letter-spacing:-0.025em;text-decoration:none;padding:16px 0;border-bottom:1px solid rgba(255,247,226,.14)}
+.mm .btn{margin-top:24px}.mm .btn-o{margin-top:16px}
+.mcta{display:none}
+/* hero */
+.hero-g{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:clamp(32px,5vw,72px);align-items:center}
+.hero-t{display:flex;flex-direction:column;justify-content:center;gap:26px}
+.ph{position:relative;overflow:hidden;border-radius:2px;background:#1a0b0a;margin:0;isolation:isolate}
+.ph img{display:block;width:100%;height:100%;object-fit:cover}
+.ph-h{aspect-ratio:5/4;width:100%;border:1px solid rgba(190,172,155,.28)}
+.ph-h img{object-position:50% 50%}
+.note{font-size:14px;line-height:1.5;color:#beac9b;margin-top:12px}
+.pline{padding:14px 18px;border:1px solid rgba(190,172,155,.5);border-radius:2px;font-size:18px;line-height:1.4;max-width:30em}
+.pline b{font-weight:600}
+.ev{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));border-top:1px solid rgba(14,14,14,.3)}
+.ev li{padding:20px 20px 0 0;display:grid;gap:6px;align-content:start}
+.rise{animation:rise .9s ease-out both}
+.rise.d1{animation-delay:.12s}.rise.d2{animation-delay:.24s}.rise.d3{animation-delay:.36s}
+@keyframes rise{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+/* modelo */
+.mg{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,6fr);gap:clamp(32px,6vw,96px);align-items:end}
+.big0{font:300 clamp(120px,20vw,280px)/.82 'Inter',sans-serif;letter-spacing:-0.06em;color:#820203;margin:0}
+/* valor */
+.vr{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(20px,4vw,64px);padding:30px 0;border-top:1px solid rgba(255,247,226,.2);align-items:baseline}
+.vr:last-child{border-bottom:1px solid rgba(255,247,226,.2)}
+/* roles */
+.rp{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:20px;align-items:start}
+.pc{padding:clamp(28px,4vw,48px);border-radius:2px;display:grid;gap:22px;align-content:start}
+.pc.b{margin-top:48px}
+.l2{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:0 32px}
+.l2 li,.l1 li{padding:13px 0;border-top:1px solid rgba(255,247,226,.2);color:#beac9b;font-size:16px}
+.l1{list-style:none;margin:0;padding:0;display:grid}
+/* pasos */
+.st4{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:3px solid #820203}
+.st4 li{padding:28px 24px 8px 0;display:grid;gap:10px;align-content:start}
+.st3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.st4 li+li{padding-left:24px;border-left:1px solid rgba(255,247,226,.2)}
+.num{font:300 clamp(56px,6vw,88px)/.9 'Inter',sans-serif;letter-spacing:-0.05em;color:#beac9b}
+/* espacios */
+.spc{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:0;border-top:1px solid rgba(14,14,14,.3)}
+.spc li{padding:20px 20px 0 0;display:grid;gap:6px;align-content:start}
+/* form */
+.fg{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(32px,5vw,80px);align-items:start}
+.card{border-radius:2px;padding:clamp(24px,3.4vw,44px);border-top:3px solid #820203}
+.q-lab{display:block;font:500 14px 'Inter',sans-serif;margin:0 0 6px;color:#0e0e0e}
+.q-in{width:100%;min-height:48px;padding:10px 14px;border:1px solid #0e0e0e;border-radius:2px;background:#fff7e2;color:#0e0e0e;font:400 16px 'Inter',sans-serif;letter-spacing:-0.02em}
+.q-in:focus{outline:2px solid #330102;outline-offset:1px}
+.q-in[aria-invalid="true"]{border:2px solid #820203}
+.f{display:grid;gap:0}
+.er{display:flex;gap:8px;align-items:flex-start;margin-top:6px;font:500 14px/1.4 'Inter',sans-serif;color:#820203}
+.er svg{flex:none;margin-top:2px}
+.cb{display:flex;gap:12px;align-items:flex-start;font-size:14.5px;line-height:1.5;min-height:32px}
+.cb input{width:22px;height:22px;margin:0;accent-color:#820203;flex:none}
+.cb a{font-weight:600}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+fieldset.chk{border:0;margin:0;padding:0}
+fieldset.chk legend{font:500 14px 'Inter',sans-serif;padding:0;margin-bottom:8px}
+.chips{display:flex;flex-wrap:wrap;gap:8px 18px}
+.alert{display:flex;gap:10px;align-items:flex-start;padding:14px 16px;border:2px solid #820203;border-radius:2px;background:#fff7e2;font-size:15px;line-height:1.45}
+.ok{background:#fff7e2;border-radius:2px;padding:24px;display:grid;gap:10px}
+.msg{font:500 clamp(22px,2.4vw,30px)/1.2 'Inter',sans-serif;letter-spacing:-0.03em;margin:0}
+/* faq */
+details.fq{border-top:1px solid rgba(14,14,14,.22)}
+details.fq:last-of-type{border-bottom:1px solid rgba(14,14,14,.22)}
+details.fq summary{list-style:none;cursor:pointer;padding:22px 0;min-height:48px;font:500 20px/1.3 'Inter',sans-serif;letter-spacing:-0.02em;display:flex;justify-content:space-between;gap:24px;align-items:center}
+details.fq summary::-webkit-details-marker{display:none}
+details.fq summary::after{content:'+';font:400 28px 'Inter',sans-serif;color:#820203}
+details.fq[open] summary::after{content:'–'}
+details.fq p{margin:0 0 24px;max-width:64ch;line-height:1.6;color:#4d4a44}
+/* pie */
+.ft{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr) minmax(0,1fr);gap:40px}
+.ft a{text-decoration:none;opacity:.85}.ft a:hover{opacity:1;text-decoration:underline}
+.ft nav{display:grid;gap:10px;font-size:15px;align-content:start}
+@media (max-width:980px){
+ .nv{display:none}.mbtn{display:inline-flex}.hd-cta{display:none}
+ .mcta{display:block;position:fixed;left:0;right:0;bottom:0;z-index:70;padding:10px 16px calc(10px + env(safe-area-inset-bottom));background:rgba(14,14,14,.97);border-top:1px solid rgba(255,247,226,.2)}
+ .mcta .btn{width:100%}
+ .ftw{padding-bottom:calc(96px + env(safe-area-inset-bottom)) !important}
+}
+@media (max-width:900px){
+ .hero-g,.mg,.vr,.rp,.fg,.ft{grid-template-columns:1fr}
+ .pc.b{margin-top:0}
+ .st4,.st3{grid-template-columns:1fr}
+ .st4 li,.st4 li+li{padding:24px 16px 8px 0;border-left:0;border-bottom:1px solid rgba(255,247,226,.2)}
+ .spc,.ev{grid-template-columns:1fr 1fr}
+ .row2,.l2{grid-template-columns:1fr}
+}
+@media (max-width:900px){.ph-h{aspect-ratio:3/2}}
+@media (max-width:600px){.st4,.st3,.spc,.ev{grid-template-columns:1fr}.s{padding-top:56px;padding-bottom:56px}.ph-h{aspect-ratio:3/2}.btn,.btn-o{width:100%}.h1{font-size:42px}}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none !important;transition:none !important;scroll-behavior:auto !important}}
+</style></head><body>
+
+
+<div style="width:100%;overflow-x:clip">
+
+<!-- ===== CABECERA ===== -->
+<header class="hd">
+  <div class="hd-in">
+    <a href="index.html" aria-label="Qhali, inicio" style="display:block;line-height:0"><img src="./wordmark-vanilla.svg" alt="Qhali" width="104" height="32" style="display:block;width:104px;height:auto"></a>
+    <nav class="nv" aria-label="Principal">
+      <a href="index.html">Experiencia Qhali</a>
+      <a href="residentes.html">Para residentes</a>
+      <a href="edificios.html" aria-current="page">Para tu edificio</a>
+      <a href="index.html">Equipo</a>
+    </nav>
+    <a class="btn hd-cta" href="#reunion">Solicitar una reunión para mi edificio</a>
+    <button class="mbtn" type="button" aria-expanded="false" aria-controls="menu-movil" aria-label="Abrir menú" onclick="() =&gt; this.setState({ menu: !open })">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M4 8h16M4 16h16"></path></svg>
+      
+    </button>
+  </div>
+  
+</header>
+
+<!-- ===== HERO ===== -->
+<section class="s dark">
+  <div class="w">
+    <div class="hero-g">
+      <div class="hero-t">
+        <p class="eb dm rise" style="margin:0">Para la Junta de Propietarios y la administración</p>
+        <h1 class="dsp h1 rise d1">Más bienestar para sus residentes.</h1>
+        <p class="lead dm rise d2" style="max-width:36ch">Los residentes interesados contratan y pagan directamente el servicio. Qhali gestiona sus profesionales, programación, reservas y atención.</p>
+        <div class="rise d3" style="display:flex;flex-wrap:wrap;gap:14px">
+          <a class="btn" href="#reunion">Solicitar una reunión para mi edificio</a>
+          <a class="btn-o" href="#modelo">Ver el modelo</a>
+        </div>
+      </div>
+      <div><figure class="ph ph-h">
+        <img src="./foto-grupo-1536.jpg" srcset="./foto-grupo-768.jpg 768w, ./foto-grupo-1536.jpg 1536w" sizes="(max-width:900px) 100vw, 520px" alt="Un grupo pequeño entrena con mancuernas mientras una trainer corrige la postura de una residente" width="1536" height="1024" fetchpriority="high" decoding="async">
+      </figure>
+        <p class="note">Imágenes ilustrativas generadas con IA; no corresponden a clientes ni instalaciones reales de Qhali.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== MODELO ECONÓMICO ===== -->
+<section class="s light" id="modelo">
+  <div class="w mg">
+    <p class="big0">S/0</p>
+    <div style="display:grid;gap:22px">
+      <h2 class="dsp" style="font-size:clamp(28px,3.2vw,44px)">de pago a Qhali por la operación para la Junta.</h2>
+      <p class="lead lm">Los residentes interesados contratan y pagan directamente el servicio. Qhali gestiona sus profesionales, programación, reservas y atención.</p>
+      <p class="lm" style="font-size:15px;line-height:1.55;max-width:52ch;padding-top:18px;border-top:1px solid rgba(14,14,14,.2)">La propuesta utiliza los espacios y equipos disponibles. Las adecuaciones, equipamiento o servicios adicionales se evalúan por separado cuando correspondan.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== VALOR PARA LA COMUNIDAD ===== -->
+<section class="s dark">
+  <div class="w">
+    <div style="display:grid;gap:18px;max-width:780px;margin-bottom:clamp(28px,4vw,48px)">
+      <p class="eb dm" style="margin:0">Qué gana el edificio</p>
+      <h2 class="dsp h2">Más uso y mejor experiencia en los espacios comunes.</h2>
+    </div>
+    <div class="vr"><h3 class="h3">Mejor aprovechamiento del gimnasio existente</h3><p class="dm" style="max-width:46ch">Los espacios existentes adquieren horarios, propósito y mayor uso.</p></div>
+    <div class="vr"><h3 class="h3">Acompañamiento profesional cerca de casa</h3><p class="dm" style="max-width:46ch">Trainers de referencia, nutrición y seguimiento para quienes decidan participar.</p></div>
+    <div class="vr"><h3 class="h3">Un nuevo servicio para la comunidad residencial</h3><p class="dm" style="max-width:46ch">Programas dentro del propio edificio y oportunidades de interacción entre residentes.</p></div>
+    </div>
+  </section></div>
+
+
+<!-- ===== RESPONSABILIDADES ===== -->
+<section class="s light">
+  <div class="w" style="display:grid;gap:clamp(32px,5vw,56px)">
+    <div style="display:grid;gap:18px;max-width:760px">
+      <p class="eb" style="margin:0;color:#820203">Quién hace qué</p>
+      <h2 class="dsp h2">Qhali gestiona la operación. El edificio facilita el espacio.</h2>
+    </div>
+    <div class="rp">
+      <div class="pc dark">
+        <h3 class="h3">Qhali gestiona</h3>
+        <ul class="l2">
+          <li>Profesionales</li><li>Programación</li><li>Reservas</li>
+          <li>Atención</li><li>Supervisión</li><li>Seguimiento de sus servicios</li>
+        </ul>
+      </div>
+      <div class="pc wine b">
+        <h3 class="h3">El edificio facilita</h3>
+        <ul class="l1">
+          <li>Facilitar el uso del espacio</li>
+          <li>Colaborar con la comunicación a los residentes</li>
+        </ul>
+      </div>
+    </div>
+    <div style="display:grid;gap:22px;padding-top:28px;border-top:1px solid rgba(14,14,14,.2)">
+      <div style="display:grid;gap:10px;max-width:60ch">
+        <h3 class="h3">Cómo evaluamos tu edificio</h3>
+        <p class="lm" style="font-size:16px;line-height:1.6">Antes de implementar, lo revisamos junto con la administración. Los acuerdos concretos se definen con cada edificio.</p>
+      </div>
+      <ul class="ev">
+        <li><h3 class="h3" style="font-size:19px">Espacio</h3><p class="lm" style="font-size:15px">Qué áreas pueden usarse para entrenar.</p></li>
+        <li><h3 class="h3" style="font-size:19px">Equipamiento</h3><p class="lm" style="font-size:15px">Qué equipos existen y qué haría falta, si algo.</p></li>
+        <li><h3 class="h3" style="font-size:19px">Horarios</h3><p class="lm" style="font-size:15px">En qué franjas puede operar el servicio.</p></li>
+        <li><h3 class="h3" style="font-size:19px">Aforo</h3><p class="lm" style="font-size:15px">Cuántas personas pueden entrenar a la vez.</p></li>
+        <li><h3 class="h3" style="font-size:19px">Convivencia</h3><p class="lm" style="font-size:15px">Cómo se comparte el espacio con otros usuarios.</p></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ===== IMPLEMENTACIÓN ===== -->
+<section class="s wine">
+  <div class="w" style="display:grid;gap:clamp(32px,5vw,56px)">
+    <div style="display:grid;gap:18px;max-width:760px">
+      <p class="eb dm" style="margin:0">Implementación</p>
+      <h2 class="dsp h2">Un proceso simple y acompañado, en tres pasos.</h2>
+    </div>
+    <ol class="st4 st3">
+      <li><span class="num" aria-hidden="true">1</span><h3 class="h3">Evaluamos el espacio</h3><p class="dm" style="font-size:16px">Revisamos equipamiento, aforo, horarios y necesidades del edificio.</p></li>
+      <li><span class="num" aria-hidden="true">2</span><h3 class="h3">Coordinamos la propuesta</h3><p class="dm" style="font-size:16px">Definimos el alcance del servicio y la coordinación con la Junta o administración.</p></li>
+      <li><span class="num" aria-hidden="true">3</span><h3 class="h3">Activamos el servicio</h3><p class="dm" style="font-size:16px">Coordinamos la comunicación y el inicio de la operación acordada.</p></li>
+    </ol>
+  </div>
+</section>
+
+<!-- ===== MÁS ALLÁ DEL GIMNASIO ===== -->
+<section class="s sand">
+  <div class="w" style="display:grid;gap:clamp(28px,4vw,48px)">
+    <div style="display:grid;gap:18px;max-width:760px">
+      <p class="eb" style="margin:0;color:#330102">Más allá del gimnasio</p>
+      <h2 class="dsp h2" style="color:#330102">Qhali se adapta a los espacios de cada comunidad.</h2>
+    </div>
+    <ul class="spc">
+      <li><h3 class="h3">Gimnasio</h3><p style="color:#330102;font-size:15px">Entrenamiento y acondicionamiento físico.</p></li>
+      <li><h3 class="h3">Salas multifuncionales</h3><p style="color:#330102;font-size:15px">Yoga, movilidad, meditación y otras actividades.</p></li>
+      <li><h3 class="h3">Áreas de baile</h3><p style="color:#330102;font-size:15px">Clases grupales y experiencias de movimiento.</p></li>
+      <li><h3 class="h3">Campos deportivos</h3><p style="color:#330102;font-size:15px">Actividades deportivas, entrenamientos y retos.</p></li>
+      <li><h3 class="h3">Espacios comunes</h3><p style="color:#330102;font-size:15px">Talleres, eventos y experiencias de bienestar.</p></li>
+    </ul>
+    <p style="color:#330102;max-width:64ch;font-size:16px;line-height:1.6">Empezamos por lo que cada edificio ya tiene. Si el edificio lo solicita, Qhali también puede asesorar en el diseño y el equipamiento de los espacios; ese alcance se revisa por separado.</p>
+  </div>
+</section>
+
+<!-- ===== FORMULARIO: SOLICITAR UNA REUNIÓN ===== -->
+<section class="s dark" id="reunion">
+  <div class="w fg">
+    <div style="display:grid;gap:22px;align-content:start">
+      <p class="eb dm" style="margin:0">Para evaluar la implementación</p>
+      <h2 class="dsp h2">Solicitar una reunión.</h2>
+      <p class="lead dm" style="max-width:30ch">Cuéntanos sobre el edificio y coordinamos una conversación con la Junta o la administración.</p>
+      <p class="dm" style="font-size:15px">También puedes escribirnos por WhatsApp al <a href="https://wa.me/51913097226" style="font-weight:600;color:#fff7e2">+51 913 097 226</a>.</p>
+    </div>
+    <div>
+      <div class="card sand">
+        
+        <form onsubmit="(e) =&gt; {
+        e.preventDefault();
+        const cur = this.S();
+        if (cur.stage === 'sending') return; /* protección ante envíos duplicados */
+        const f = Object.assign({}, cur.form);
+        const els = e.target.elements;
+        ['nombre', 'cargo', 'edificio', 'distrito', 'celular', 'correo', 'deptos'].forEach((k) =&gt; { if (els[k]) f[k] = els[k].value; });
+        if (els.consent) f.consent = els.consent.checked;
+        if (els.marketing) f.marketing = els.marketing.checked;
+        const er = {};
+        if (!f.nombre.trim()) er.nombre = 'Escribe tu nombre.';
+        if (!f.cargo) er.cargo = 'Selecciona tu cargo.';
+        if (!f.edificio.trim()) er.edificio = 'Escribe el nombre del edificio.';
+        if (!f.distrito.trim()) er.distrito = 'Indica el distrito.';
+        if (!phoneOk(f.celular)) er.celular = 'Escribe un celular de 9 dígitos, por ejemplo 987 654 321.';
+        if (!mailOk(f.correo.trim())) er.correo = 'Escribe un correo válido.';
+        if (!f.consent) er.consent = 'Para continuar, acepta que Qhali te contacte.';
+        if (Object.keys(er).length) { this.setState({ form: f, errors: er }); return; }
+        const key = cur.leadKey || ('lead-' + Date.now().toString(36) + Math.random().toString(36).slice(2, 8));
+        this.setState({ form: f, errors: {}, stage: 'sending', leadKey: key });
+        const payload = {
+          idempotency_key: key, lead_type: 'junta', campaign: this.campaign(),
+          building_declared: { name: f.edificio, district: f.distrito, units: f.deptos || null, spaces: f.spaces, verification: 'pendiente' },
+          contact: { name: f.nombre, role: f.cargo, phone: f.celular, email: f.correo },
+          consent_contact: true, consent_marketing: !!f.marketing
+        };
+        track('lead_submit', { lead_type: 'junta' });
+        this.deliver(payload, (ok) =&gt; this.setState({ stage: ok ? 'done' : 'error' }));
+      }" novalidate="" style="display:grid;gap:18px">
+          
+          <div class="row2">
+            <div class="f"><label class="q-lab" for="g-nombre">Nombre</label>
+              <input class="q-in" id="g-nombre" name="nombre" type="text" autocomplete="name" value="" oninput="(e) =&gt; {
+        const t = e.target;
+        const f = Object.assign({}, this.S().form);
+        f[t.name] = t.type === 'checkbox' ? t.checked : t.value;
+        this.setState({ form: f });
+      }" onchange="(e) =&gt; {
+        const t = e.target;
+        const f = Object.assign({}, this.S().form);
+        f[t.name] = t.type === 'checkbox' ? t.checked : t.value;
+        this.setState({ form: f });
+      }" aria-invalid="false" aria-describedby="e-nombre">
+              </div>
+            <div class="f"><label class="q-lab" for="g-cargo">Cargo</label>
+              <select class="q-in" id="g-cargo" name="cargo" value="" onchange="(e) =&gt; {
+        const t = e.target;
+        const f = Object.assign({}, this.S().form);
+        f[t.name] = t.type === 'checkbox' ? t.checked : t.value;
+        this.setState({ form: f });
+      }" aria-invalid="false" aria-describedby="e-cargo">
+                <option value="">Selecciona</option><option value="Presidente/a de la Junta">Presidente/a de la Junta</option><option value="Miembro de la Junta">Miembro de la Junta</option><option value="Administrador/a">Administrador/a</option><option value="Propietario/a">Propietario/a</option><option value="Otro">Otro</option>
+              </select>
+              </div>
+          </div>
+          <div class="row2">
+            <div class="f"><label class="q-lab" for="g-edificio">Edificio o condominio</label>
+              <input class="q-in" id="g-edificio" name="edificio" type="text" value="" oninput="(e) =&gt; {
+        const t = e.target;
+        const f = Object.assign({}, this.S().form);
+        f[t.name] = t.type === 'checkbox' ? t.checked : t.value;
+        this.setState({ form: f });
+      }" onchange="(e) =&gt; {
+        const t = e.target;
+        const f = Object.assign({}, this.S().form);
+        f[t.name] = t.type === 'checkbox' ? t.checked : t.value;
+        this.setState({ form: f });
+      }" aria-invalid="false" aria-describedby="e-edificio">
+              </div>
+            <div class="f"><label class="q-lab" for="g-distrito">Distrito</label>
+              <input class="q-in" id="g-distrito" name="distrito" type="text" value="" oninput="(e) =&gt; {
+        const t = e.target;
+        const f = Object.assign({}, this.S().form);
+        f[t.name] = t.type === 'checkbox' ? t.checked : t.value;
+        this.setState({ form: f });
+      }" onchange="(e) =&gt; {
+        const t = e.target;
+        const f = Object.assign({}, this.S().form);
+        f[t.name] = t.type === 'checkbox' ? t.checked : t.value;
+        this.setState({ form: f });
+      }" aria-invalid="false" aria-describedby="e-distrito">
+              </div>
+          </div>
+          <div class="row2">
+            <div class="f"><label class="q-lab" for="g-celular">Celular</label>
+              <input class="q-in" id="g-celular" name="celular" type="tel" inputmode="tel" autocomplete="tel" placeholder="987 654 321" value="" oninput="(e) =&gt; {
+        const t = e.target;
+        const f = Object.assign({}, this.S().form);
+        f[t.name] = t.type === 'checkbox' ? t.checked : t.value;
+        this.setState({ form: f });
+      }" onchange="(e) =&gt; {
+        const t = e.target;
+        const f = Object.assign({}, this.S().form);
+        f[t.name] = t.type === 'checkbox' ? t.checked : t.value;
+        this.setState({ form: f });
+      }" aria-invalid="false" aria-describedby="e-celular">
+              </div>
+            <div class="f"><label class="q-lab" for="g-correo">Correo</label>
+              <input class="q-in" id="g-correo" name="correo" type="email" autocomplete="email" value="" oninput="(e) =&gt; {
+        const t = e.target;
+        const f = Object.assign({}, this.S().form);
+        f[t.name] = t.type === 'checkbox' ? t.checked : t.value;
+        this.setState({ form: f });
+      }" onchange="(e) =&gt; {
+        const t = e.target;
+        const f = Object.assign({}, this.S().form);
+        f[t.name] = t.type === 'checkbox' ? t.checked : t.value;
+        this.setState({ form: f });
+      }" aria-invalid="false" aria-describedby="e-correo">
+              </div>
+          </div>
+          <div class="f"><label class="q-lab" for="g-deptos">N.º de departamentos (opcional)</label>
+            <input class="q-in" id="g-deptos" name="deptos" type="number" min="1" inputmode="numeric" value="" oninput="(e) =&gt; {
+        const t = e.target;
+        const f = Object.assign({}, this.S().form);
+        f[t.name] = t.type === 'checkbox' ? t.checked : t.value;
+        this.setState({ form: f });
+      }" onchange="(e) =&gt; {
+        const t = e.target;
+        const f = Object.assign({}, this.S().form);
+        f[t.name] = t.type === 'checkbox' ? t.checked : t.value;
+        this.setState({ form: f });
+      }" style="max-width:220px"></div>
+          <fieldset class="chk"><legend>Espacios disponibles (opcional)</legend>
+            <div class="chips">
+              <label class="cb" style="align-items:center"><input type="checkbox" onchange="() =&gt; {
+          const f = Object.assign({}, this.S().form);
+          const cur = (f.spaces || []).slice();
+          const i = cur.indexOf(label);
+          if (i &gt;= 0) cur.splice(i, 1); else cur.push(label);
+          f.spaces = cur;
+          this.setState({ form: f });
+        }"><span>Gimnasio</span></label><label class="cb" style="align-items:center"><input type="checkbox" onchange="() =&gt; {
+          const f = Object.assign({}, this.S().form);
+          const cur = (f.spaces || []).slice();
+          const i = cur.indexOf(label);
+          if (i &gt;= 0) cur.splice(i, 1); else cur.push(label);
+          f.spaces = cur;
+          this.setState({ form: f });
+        }"><span>Sala multifuncional</span></label><label class="cb" style="align-items:center"><input type="checkbox" onchange="() =&gt; {
+          const f = Object.assign({}, this.S().form);
+          const cur = (f.spaces || []).slice();
+          const i = cur.indexOf(label);
+          if (i &gt;= 0) cur.splice(i, 1); else cur.push(label);
+          f.spaces = cur;
+          this.setState({ form: f });
+        }"><span>Área de baile</span></label><label class="cb" style="align-items:center"><input type="checkbox" onchange="() =&gt; {
+          const f = Object.assign({}, this.S().form);
+          const cur = (f.spaces || []).slice();
+          const i = cur.indexOf(label);
+          if (i &gt;= 0) cur.splice(i, 1); else cur.push(label);
+          f.spaces = cur;
+          this.setState({ form: f });
+        }"><span>Campo deportivo</span></label><label class="cb" style="align-items:center"><input type="checkbox" onchange="() =&gt; {
+          const f = Object.assign({}, this.S().form);
+          const cur = (f.spaces || []).slice();
+          const i = cur.indexOf(label);
+          if (i &gt;= 0) cur.splice(i, 1); else cur.push(label);
+          f.spaces = cur;
+          this.setState({ form: f });
+        }"><span>Otro</span></label>
+            </div>
+          </fieldset>
+          <div class="f"><label class="cb" for="g-consent"><input id="g-consent" name="consent" type="checkbox" onchange="(e) =&gt; {
+        const t = e.target;
+        const f = Object.assign({}, this.S().form);
+        f[t.name] = t.type === 'checkbox' ? t.checked : t.value;
+        this.setState({ form: f });
+      }" aria-invalid="false" aria-describedby="e-consent"><span>Acepto que Qhali me contacte por celular, WhatsApp o correo para coordinar esta reunión. Conoce la <a href="#privacidad">política de privacidad</a>.</span></label>
+            </div>
+          <label class="cb" for="g-marketing"><input id="g-marketing" name="marketing" type="checkbox" onchange="(e) =&gt; {
+        const t = e.target;
+        const f = Object.assign({}, this.S().form);
+        f[t.name] = t.type === 'checkbox' ? t.checked : t.value;
+        this.setState({ form: f });
+      }"><span>Quiero recibir novedades de Qhali (opcional, aparte de esta solicitud).</span></label>
+          
+          <div><button class="btn" type="submit" aria-busy="false">Solicitar una reunión</button></div>
+        </form>
+        
+        
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PREGUNTAS FRECUENTES ===== -->
+<section class="s light">
+  <div class="w" style="max-width:960px;display:grid;gap:40px">
+    <h2 class="dsp h2">Preguntas frecuentes de la Junta.</h2>
+    <div>
+      <details class="fq" data-pending="false"><summary>¿Qué paga la Junta?</summary><p>Nada a Qhali por la operación. Los residentes interesados contratan y pagan directamente el servicio. Si el edificio solicita adecuaciones, equipamiento o alcances adicionales, se revisan por separado.</p></details>
+      <details class="fq" data-pending="false"><summary>¿Qué aporta el edificio?</summary><p>Facilita el uso del espacio y colabora en la comunicación del servicio a los residentes.</p></details>
+      <details class="fq" data-pending="false"><summary>¿Quién gestiona el servicio?</summary><p>Qhali: profesionales, programación, reservas, atención, supervisión, protocolos, reemplazo de profesionales y seguimiento.</p></details>
+      <details class="fq" data-pending="true"><summary>¿Cómo se coordinan los horarios y la convivencia con otros usos del espacio?</summary><p>Antes de implementar, evaluamos con la administración el aforo, los horarios y la convivencia. Los acuerdos concretos se definen con cada edificio.</p></details>
+      <details class="fq" data-pending="false"><summary>¿Qué se necesita para evaluar nuestro edificio?</summary><p>Conocer el espacio, el equipamiento disponible, el aforo y los horarios en que podría usarse. Solicita una reunión y lo revisamos juntos.</p></details>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CIERRE ===== -->
+<section class="s wine">
+  <div class="w" style="display:grid;gap:32px">
+    <h2 class="dsp h2" style="max-width:18ch">El bienestar no debería estar lejos de casa.</h2>
+    <div style="display:flex;flex-wrap:wrap;gap:14px;align-items:center">
+      <a class="btn" href="#reunion">Solicitar una reunión para mi edificio</a>
+      <a class="tl" href="residentes.html">¿Eres residente? Consulta si Qhali está en tu edificio <span aria-hidden="true">→</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PIE ===== -->
+<footer class="s dark ftw" style="padding-top:64px;padding-bottom:40px">
+  <div class="w">
+    <div class="ft">
+      <div style="display:grid;gap:20px;align-content:start">
+        <img src="./wordmark-vanilla.svg" alt="Qhali" width="136" height="42" style="display:block;width:136px;height:auto">
+        <p class="dm" style="font:italic 400 22px/1.25 'Playfair Display',Georgia,serif;max-width:18ch">Wellbeing premium dentro de tu edificio.</p>
+      </div>
+      <nav aria-label="Pie de página">
+        <a href="index.html">Experiencia Qhali</a>
+        <a href="residentes.html">Para residentes</a>
+        <a href="edificios.html">Para tu edificio</a>
+        <a href="index.html">Equipo</a>
+      </nav>
+      <div style="display:grid;gap:10px;font-size:15px;align-content:start">
+        <b style="font-weight:600">Contacto</b>
+        <a href="https://wa.me/51913097226">+51 913 097 226</a>
+        <p class="dm">Move · Nourish · Recover</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<div class="mcta"><a class="btn" href="#reunion">Solicitar una reunión para mi edificio</a></div>
+
+
+</body></html>
